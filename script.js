@@ -10,6 +10,16 @@ var level = 0;
 
 var started = false;
 
+var buttonStart = document.createElement("button");
+buttonStart.textContent = "Start";
+document.getElementById('buttonStart').appendChild(buttonStart);
+
+buttonStart.addEventListener("click", function(){
+    nextSequence();
+    started = true;
+    buttonStart.remove();
+});
+
 // Star the game with keyboard
 document.addEventListener("keypress", function () {
     if (!started) {
@@ -17,6 +27,7 @@ document.addEventListener("keypress", function () {
         nextSequence();
         started = true;
     }
+    buttonStart.remove();
 });
 
 // Click on the keyboard
@@ -90,5 +101,13 @@ function startOver() {
     level = 0;
     gamePattern = [];
     started = false;
+    var buttonStart = document.createElement("button");
+    buttonStart.textContent = "Restart";
+    document.getElementById('buttonStart').appendChild(buttonStart);
+    buttonStart.addEventListener("click", function () {
+        started = true;
+        nextSequence();
+        buttonStart.remove();
+    });
 }
 
